@@ -6,7 +6,6 @@ import './App.css';
 
 const Timer = (props) => {
   const timerColour = document.querySelector('.timer-style');
-  console.log(timerColour);
   const { initialMinute = 0, initialSeconds = 2 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
@@ -44,35 +43,37 @@ const Timer = (props) => {
       }
       if (phase % 2 === 1 && phase <= 9) {
         if (phase === 9) {
-          setStatus('WORK');
-          setPhase(2);
+          setPhase(0);
           setRounds(0);
-        } else {
-          setMinutes(0);
-          setSeconds(2);
-          setPhase(phase + 1);
-          setStatus('REST');
-          timerColour.style.setProperty('background', 'lightpink');
         }
+        setMinutes(0);
+        setSeconds(2);
+        setPhase(phase + 1);
+        setStatus('REST');
+        timerColour.style.setProperty('background', 'lightpink');
       }
+
       if (phase === 8) {
         setStatus('EXTENDED REST');
         setMinutes(0);
         setSeconds(2);
-        setPhase(phase + 1);
+        setPhase(0);
+        setRounds(0);
         timerColour.style.setProperty('background', 'red');
       }
-
-      return;
     }
-    return;
   };
 
   return (
     <div className="timer-style">
       <h1>Current Task : {}</h1>
       {resetPhases()}
-      <h1>Completed Rounds: {rounds}/4</h1>
+      {status === 'EXTENDED REST' ? (
+        <h1>You have completed a full Pomodoro!</h1>
+      ) : (
+        <h1>Completed Rounds: {rounds}/4</h1>
+      )}
+
       <h1>{`${status} FOR:`} </h1>
       <h1 className="Counter">
         {minutes} : {seconds}{' '}
