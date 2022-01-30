@@ -5,11 +5,40 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  display: grid;
+  row-gap: 1ch;
 }
 
 .header-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
 
-  height: 20px;
-  width:20px;
+.Header {
+  font-family: Arial;
+  color: red;
+  border: black;
+  border-style: solid;
+  border-radius: 10px;
+  justify-content: top;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
+.Timer {
+  border: black;
+  border-style: solid;
+  border-radius: 10px;
+  justify-content: top;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  background: lightgreen;
+}
+
+.Counter {
+  font-size: xx-large;
 }
