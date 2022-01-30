@@ -28,7 +28,7 @@
   flex-direction: column;
 }
 
-.Timer {
+.timer-style {
   border: black;
   border-style: solid;
   border-radius: 10px;

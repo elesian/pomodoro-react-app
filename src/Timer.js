@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import styles from './App.css';
+import './App.css';
 
 const Timer = (props) => {
+  const timerColour = document.querySelector('.timer-style');
+  console.log(timerColour);
   const { initialMinute = 0, initialSeconds = 2 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
@@ -38,6 +40,7 @@ const Timer = (props) => {
         setStatus('WORK');
         setPhase(phase + 1);
         setRounds(rounds + 1);
+        timerColour.style.setProperty('background', 'lightgreen');
       }
       if (phase % 2 === 1 && phase <= 9) {
         if (phase === 9) {
@@ -49,6 +52,7 @@ const Timer = (props) => {
           setSeconds(2);
           setPhase(phase + 1);
           setStatus('REST');
+          timerColour.style.setProperty('background', 'lightpink');
         }
       }
       if (phase === 8) {
@@ -56,6 +60,7 @@ const Timer = (props) => {
         setMinutes(0);
         setSeconds(2);
         setPhase(phase + 1);
+        timerColour.style.setProperty('background', 'red');
       }
 
       return;
@@ -64,7 +69,7 @@ const Timer = (props) => {
   };
 
   return (
-    <div className="Timer">
+    <div className="timer-style">
       <h1>Current Task : {}</h1>
       {resetPhases()}
       <h1>Completed Rounds: {rounds}/4</h1>
