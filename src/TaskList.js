@@ -5,13 +5,18 @@ import React from 'react';
 import { useState } from 'react';
 import Timer from './Timer';
 
-const removeItem = (cb, task, list, setCurrentTask) => {
-  const arrayValue = list.filter((element) => element !== task);
+const removeItem = (cb, task, list, setCurrentTask, item) => {
+  console.log(item);
+  const arrayValue = list.filter((element) => element !== item);
   console.log(arrayValue);
-  setCurrentTask(arrayValue[0]);
+  if (task !== null) {
+    setCurrentTask(arrayValue[0]);
+  } else {
+    setCurrentTask(null);
+  }
 
   if (arrayValue.length === 0) {
-    setCurrentTask('');
+    setCurrentTask(null);
   }
 
   cb(() => {
@@ -19,19 +24,19 @@ const removeItem = (cb, task, list, setCurrentTask) => {
   });
 };
 
-const resetTimer = (setReset, task, setCurrentTask) => {
+const resetTimer = (setReset, task, setCurrentTask, item) => {
   setReset(true);
-  setCurrentTask(task);
-  console.log(task);
+  setCurrentTask(item);
+  console.log(item);
 };
 
 const TaskList = () => {
   const [list, setList] = useState(['Task1', 'Task2', 'Task3']);
   const [reset, setReset] = useState(false);
-  const [task, setCurrentTask] = useState('');
+  const [task, setCurrentTask] = useState(null);
   return (
     <div>
-      {list.length !== 0 && task !== '' ? (
+      {list.length !== 0 && task !== null ? (
         <div>
           <Timer currentTask={task} />
         </div>
@@ -43,20 +48,22 @@ const TaskList = () => {
         <h2>Task List</h2>
         {list.length !== 0 ? (
           <ol>
-            {list.map((task) => {
+            {list.map((item) => {
               return (
-                <li key={task}>
-                  {task}
+                <li key={item}>
+                  {item}
                   <button
                     className="button"
-                    onClick={() => resetTimer(setReset, task, setCurrentTask)}
+                    onClick={() =>
+                      resetTimer(setReset, task, setCurrentTask, item)
+                    }
                   >
                     SELECT
                   </button>
                   <button
                     className="button"
                     onClick={() =>
-                      removeItem(setList, task, list, setCurrentTask)
+                      removeItem(setList, task, list, setCurrentTask, item)
                     }
                   >
                     DELETE

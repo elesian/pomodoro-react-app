@@ -22,6 +22,7 @@ const TaskItem = ({ setList }) => {
       <h3>Add Task Item</h3>
       <form onSubmit={handleSubmit}>
         <input
+          required
           value={newItem}
           placeholder="Add new task item..."
           onChange={(event) => setNewItem(event.target.value)}
