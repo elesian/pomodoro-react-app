@@ -4,11 +4,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 const Timer = ({
-  initialSeconds = 5,
+  initialSeconds = 2,
   initialMinute = 0,
   currentTask,
-  reset,
-  resetFunction,
+  pause,
+  setPause,
 }) => {
   const timerColour = document.querySelector('.timer-style');
   const [minutes, setMinutes] = useState(initialMinute);

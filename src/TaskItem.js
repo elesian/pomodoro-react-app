@@ -1,8 +1,35 @@
 /** @format */
 
-const TaskItem = (props) => {
+import React from 'react';
+import { useState } from 'react';
 
-    return ( <h1 className="Header">Task Item</h1>)
+const TaskItem = ({ setList }) => {
+  const [newItem, setNewItem] = useState('');
+
+  const handleSubmit = (event) => {
+    // prevent the forms default behaviour
+    event.preventDefault();
+    // add the newItem to our list in App
+    setList((currList) => {
+      return [...currList, newItem];
+    });
+    // reset the input to be empty
+    setNewItem('');
+  };
+
+  return (
+    <div className="input">
+      <h3>Add Task Item</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          value={newItem}
+          placeholder="Add new task item..."
+          onChange={(event) => setNewItem(event.target.value)}
+        />
+        <button type="submit">Add item</button>
+      </form>
+    </div>
+  );
 };
 
 export default TaskItem;

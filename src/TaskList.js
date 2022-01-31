@@ -6,9 +6,14 @@ import { useState } from 'react';
 import Timer from './Timer';
 
 const removeItem = (cb, task, list, setCurrentTask) => {
-  setCurrentTask('');
   const arrayValue = list.filter((element) => element !== task);
   console.log(arrayValue);
+  setCurrentTask(arrayValue[0]);
+
+  if (arrayValue.length === 0) {
+    setCurrentTask('');
+  }
+
   cb(() => {
     return arrayValue;
   });
@@ -17,6 +22,7 @@ const removeItem = (cb, task, list, setCurrentTask) => {
 const resetTimer = (setReset, task, setCurrentTask) => {
   setReset(true);
   setCurrentTask(task);
+  console.log(task);
 };
 
 const TaskList = () => {
@@ -25,9 +31,9 @@ const TaskList = () => {
   const [task, setCurrentTask] = useState('');
   return (
     <div>
-      {task !== '' && list.includes(task) ? (
+      {list.length !== 0 && task !== '' ? (
         <div>
-          <Timer currentTask={task} reset={reset} resetFunction={setReset} />
+          <Timer currentTask={task} />
         </div>
       ) : null}
       <div className="task-list">
@@ -60,8 +66,7 @@ const TaskList = () => {
           <h3>You have no outstanding tasks</h3>
         )}
       </div>
-
-      <TaskItem></TaskItem>
+      <TaskItem setList={setList}></TaskItem>
     </div>
   );
 };
