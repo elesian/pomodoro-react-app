@@ -4,8 +4,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 const Timer = ({
-  initialSeconds = 5,
-  initialMinute = 10,
+  initialSeconds = 2,
+  initialMinute = 0,
   currentTask,
   pause,
   setPause,
@@ -89,7 +89,7 @@ const Timer = ({
       <h1 className="Counter">
         {minutes < 10 ? `0${minutes}m` : `${minutes}m`}
         {' : '}
-        {seconds < 10 ? `0${seconds}` : `${seconds}`}s
+        {seconds < 10 ? `0${seconds}s` : `${seconds}s`}
       </h1>
     </div>
   );
