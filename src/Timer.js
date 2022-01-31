@@ -18,19 +18,14 @@ const Timer = ({
   const [rounds, setRounds] = useState(1);
 
   let isPaused = true;
-  useEffect(() => {
-    
-
-
-
-  }, [isPaused])
+  useEffect(() => {}, [isPaused]);
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if (seconds > 0) {
+      if (seconds > -1) {
         setSeconds(seconds - 1);
       }
-      if (seconds === 0) {
+      if (seconds === -1) {
         if (minutes === 0) {
           clearInterval(myInterval);
         } else {
@@ -45,13 +40,16 @@ const Timer = ({
   });
 
   const resetPhases = () => {
-
-    if (minutes === 0 && seconds === 0) {
+    if (minutes !== 0 && seconds === -1) {
+      setSeconds(59);
+      setMinutes(minutes - 1);
+    }
+    if (minutes === 0 && seconds === -1) {
       if (phase % 2 === 0 && phase < 8) {
         setMinutes(0);
         setSeconds(2);
-        setStatus('WORK');
         setPhase(phase + 1);
+        setStatus('WORK');
         setRounds(rounds + 1);
         timerColour.style.setProperty('background', 'lightgreen');
       }
@@ -94,6 +92,5 @@ const Timer = ({
     </div>
   );
 };
-
 
 export default Timer;
