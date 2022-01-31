@@ -36,6 +36,9 @@ const TaskList = () => {
           <Timer currentTask={task} />
         </div>
       ) : null}
+      <div>
+        <TaskItem setList={setList}></TaskItem>
+      </div>
       <div className="task-list">
         <h2>Task List</h2>
         {list.length !== 0 ? (
@@ -66,7 +69,6 @@ const TaskList = () => {
           <h3>You have no outstanding tasks</h3>
         )}
       </div>
-      <TaskItem setList={setList}></TaskItem>
     </div>
   );
 };

@@ -17,6 +17,14 @@ const Timer = ({
   const [status, setStatus] = useState('WORK');
   const [rounds, setRounds] = useState(1);
 
+  let isPaused = true;
+  useEffect(() => {
+    
+
+
+
+  }, [isPaused])
+
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -37,6 +45,7 @@ const Timer = ({
   });
 
   const resetPhases = () => {
+
     if (minutes === 0 && seconds === 0) {
       if (phase % 2 === 0 && phase < 8) {
         setMinutes(0);
@@ -85,5 +94,6 @@ const Timer = ({
     </div>
   );
 };
+
 
 export default Timer;
