@@ -4,11 +4,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 const Timer = ({
-  initialSeconds = 2,
+  initialSeconds = 5,
   initialMinute = 0,
   currentTask,
-  reset,
-  resetFunction,
 }) => {
   const timerColour = document.querySelector('.timer-style');
   const [minutes, setMinutes] = useState(initialMinute);
@@ -16,8 +14,9 @@ const Timer = ({
   const [phase, setPhase] = useState(1);
   const [status, setStatus] = useState('WORK');
   const [rounds, setRounds] = useState(1);
+
   useEffect(() => {
-    let myInterval = setInterval((currentPhase) => {
+    let myInterval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       }
@@ -35,7 +34,7 @@ const Timer = ({
     };
   });
 
-  const resetPhases = (reset, resetFunction) => {
+  const resetPhases = () => {
     if (minutes === 0 && seconds === 0) {
       if (phase % 2 === 0 && phase < 8) {
         setMinutes(0);
@@ -71,7 +70,7 @@ const Timer = ({
   return (
     <div className="timer-style">
       <h1>Current Task : {currentTask}</h1>
-      {resetPhases(reset, resetFunction)}
+      {resetPhases()}
       {status === 'EXTENDED REST' ? (
         <h1>You have completed a full Pomodoro!</h1>
       ) : (

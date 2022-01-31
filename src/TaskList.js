@@ -5,29 +5,38 @@ import React from 'react';
 import { useState } from 'react';
 import Timer from './Timer';
 
-const removeItem = (cb, task, list) => {
-  console.log(task);
+const removeItem = (cb, task, list, setCurrentTask) => {
+  setCurrentTask('');
   const arrayValue = list.filter((element) => element !== task);
   console.log(arrayValue);
-  cb((status) => {
+  cb(() => {
     return arrayValue;
   });
 };
 
-const resetTimer = (setReset, task, setCurrentTask) => {
+const resetTimer = (setReset, task, setCurrentTask, setChangeTask) => {
+  console.log(task);
   setReset(true);
   setCurrentTask(task);
+  setChangeTask(true);
 };
 
 const TaskList = () => {
   const [list, setList] = useState(['Task1', 'Task2', 'Task3']);
   const [reset, setReset] = useState(false);
   const [task, setCurrentTask] = useState('');
+  const [changeTask, setChangeTask] = useState(false);
   return (
     <div>
-      {reset === true && list.includes(task) ? (
+      {task !== '' && list.includes(task) ? (
         <div>
-          <Timer currentTask={task} reset={reset} resetFunction={setReset} />
+          <Timer
+            currentTask={task}
+            reset={reset}
+            resetFunction={setReset}
+            changeTask={changeTask}
+            setChangeTask={setChangeTask}
+          />
         </div>
       ) : null}
       <div className="task-list">
@@ -40,13 +49,17 @@ const TaskList = () => {
                   {task}
                   <button
                     className="button"
-                    onClick={() => resetTimer(setReset, task, setCurrentTask)}
+                    onClick={() =>
+                      resetTimer(setReset, task, setCurrentTask, setChangeTask)
+                    }
                   >
                     SELECT
                   </button>
                   <button
                     className="button"
-                    onClick={() => removeItem(setList, task, list)}
+                    onClick={() =>
+                      removeItem(setList, task, list, setCurrentTask)
+                    }
                   >
                     DELETE
                   </button>
