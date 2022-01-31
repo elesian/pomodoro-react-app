@@ -37,8 +37,26 @@
   display: flex;
   flex-direction: column;
   background: lightgreen;
+  
 }
 
 .Counter {
   font-size: xx-large;
+}
+
+.task-list {
+  font-family: Arial;
+  color: black;
+  border: black;
+  border-style: solid;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1ch;
+}
+
+.button {
+  margin: 5px;
 }

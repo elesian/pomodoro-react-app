@@ -2,18 +2,22 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './App.css';
 
-const Timer = (props) => {
+const Timer = ({
+  initialSeconds = 2,
+  initialMinute = 0,
+  currentTask,
+  reset,
+  resetFunction,
+}) => {
   const timerColour = document.querySelector('.timer-style');
-  const { initialMinute = 0, initialSeconds = 2 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
   const [phase, setPhase] = useState(1);
   const [status, setStatus] = useState('WORK');
   const [rounds, setRounds] = useState(1);
   useEffect(() => {
-    let myInterval = setInterval(() => {
+    let myInterval = setInterval((currentPhase) => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       }
@@ -31,7 +35,7 @@ const Timer = (props) => {
     };
   });
 
-  const resetPhases = () => {
+  const resetPhases = (reset, resetFunction) => {
     if (minutes === 0 && seconds === 0) {
       if (phase % 2 === 0 && phase < 8) {
         setMinutes(0);
@@ -66,14 +70,13 @@ const Timer = (props) => {
 
   return (
     <div className="timer-style">
-      <h1>Current Task : {}</h1>
-      {resetPhases()}
+      <h1>Current Task : {currentTask}</h1>
+      {resetPhases(reset, resetFunction)}
       {status === 'EXTENDED REST' ? (
         <h1>You have completed a full Pomodoro!</h1>
       ) : (
         <h1>Completed Rounds: {rounds}/4</h1>
       )}
-
       <h1>{`${status} FOR:`} </h1>
       <h1 className="Counter">
         {minutes} : {seconds}{' '}

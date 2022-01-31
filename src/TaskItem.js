@@ -2,7 +2,7 @@
 
 const TaskItem = (props) => {
 
-    return ( <h1>Task Item</h1>)
+    return ( <h1 className="Header">Task Item</h1>)
 };
 
 export default TaskItem;
