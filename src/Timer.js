@@ -4,8 +4,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 const Timer = ({
-  initialSeconds = 2,
-  initialMinute = 0,
+  initialSeconds = 5,
+  initialMinute = 10,
   currentTask,
   pause,
   setPause,
@@ -78,7 +78,7 @@ const Timer = ({
 
   return (
     <div className="timer-style">
-      <h1>Current Task : {currentTask}</h1>
+      <h1>Current Task : {currentTask.toUpperCase()}</h1>
       {resetPhases()}
       {status === 'EXTENDED REST' ? (
         <h1>You have completed a full Pomodoro!</h1>
@@ -87,7 +87,9 @@ const Timer = ({
       )}
       <h1>{`${status} FOR:`} </h1>
       <h1 className="Counter">
-        {minutes} : {seconds}{' '}
+        {minutes < 10 ? `0${minutes}m` : `${minutes}m`}
+        {' : '}
+        {seconds < 10 ? `0${seconds}` : `${seconds}`}s
       </h1>
     </div>
   );
