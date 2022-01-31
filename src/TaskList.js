@@ -14,29 +14,20 @@ const removeItem = (cb, task, list, setCurrentTask) => {
   });
 };
 
-const resetTimer = (setReset, task, setCurrentTask, setChangeTask) => {
-  console.log(task);
+const resetTimer = (setReset, task, setCurrentTask) => {
   setReset(true);
   setCurrentTask(task);
-  setChangeTask(true);
 };
 
 const TaskList = () => {
   const [list, setList] = useState(['Task1', 'Task2', 'Task3']);
   const [reset, setReset] = useState(false);
   const [task, setCurrentTask] = useState('');
-  const [changeTask, setChangeTask] = useState(false);
   return (
     <div>
       {task !== '' && list.includes(task) ? (
         <div>
-          <Timer
-            currentTask={task}
-            reset={reset}
-            resetFunction={setReset}
-            changeTask={changeTask}
-            setChangeTask={setChangeTask}
-          />
+          <Timer currentTask={task} reset={reset} resetFunction={setReset} />
         </div>
       ) : null}
       <div className="task-list">
@@ -49,9 +40,7 @@ const TaskList = () => {
                   {task}
                   <button
                     className="button"
-                    onClick={() =>
-                      resetTimer(setReset, task, setCurrentTask, setChangeTask)
-                    }
+                    onClick={() => resetTimer(setReset, task, setCurrentTask)}
                   >
                     SELECT
                   </button>
