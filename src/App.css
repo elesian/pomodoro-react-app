@@ -1,14 +1,19 @@
 /** @format */
 
 .App {
-  text-align: center;
+  height: 100%;
+  width: 100%;
   display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  text-align: center;
   flex-direction: column;
-  justify-content: center;
-  display: grid;
+  align-content: baseline;
+  flex-wrap: nowrap;
+  justify-items: baseline;
+  max-width: 100vh;
+  margin-inline: auto;
   row-gap: 1ch;
-
-  height: 100vh;
 }
 
 .header-image {
@@ -68,7 +73,7 @@
   border: black;
   border-style: solid;
   border-radius: 10px;
-  justify-content: top;
+  justify-content: space-evenly;
   font-size: 20px;
   display: flex;
   flex-direction: column;
@@ -77,4 +82,8 @@
 
 .button {
   margin-left: 10px;
+}
+
+.submit-task {
+  margin-bottom: 1em;
 }

@@ -7,8 +7,6 @@ const Timer = ({
   initialSeconds = 2,
   initialMinute = 0,
   currentTask,
-  pause,
-  setPause,
 }) => {
   const timerColour = document.querySelector('.timer-style');
   const [minutes, setMinutes] = useState(initialMinute);

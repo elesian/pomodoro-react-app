@@ -20,7 +20,7 @@ const TaskItem = ({ setList }) => {
   return (
     <div className="input">
       <h3>Add Task Item</h3>
-      <form onSubmit={handleSubmit}>
+      <form className='submit-task' onSubmit={handleSubmit}>
         <input
           required
           value={newItem}
