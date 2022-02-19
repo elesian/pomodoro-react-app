@@ -47,31 +47,33 @@ const TaskList = () => {
       <div className="task-list">
         <h2>Task List</h2>
         {list.length !== 0 ? (
-          <ol>
-            {list.map((item) => {
-              return (
-                <li key={item}>
-                  {item}
-                  <button
-                    className="button"
-                    onClick={() =>
-                      resetTimer(setReset, task, setCurrentTask, item)
-                    }
-                  >
-                    SELECT
-                  </button>
-                  <button
-                    className="button"
-                    onClick={() =>
-                      removeItem(setList, task, list, setCurrentTask, item)
-                    }
-                  >
-                    DELETE
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
+          <nav className='container'>
+            <ol>
+              {list.map((item, i) => {
+                return (
+                  <li key={`${item} + ${i}`}>
+                    {item}
+                    <button
+                      className="button"
+                      onClick={() =>
+                        resetTimer(setReset, task, setCurrentTask, item)
+                      }
+                    >
+                      SELECT
+                    </button>
+                    <button
+                      className="button"
+                      onClick={() =>
+                        removeItem(setList, task, list, setCurrentTask, item)
+                      }
+                    >
+                      DELETE
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
         ) : (
           <h3>You have no outstanding tasks</h3>
         )}
