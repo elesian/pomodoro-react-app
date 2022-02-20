@@ -26,7 +26,7 @@ Please see https://elesian.github.io/pomodoro-react-app/ for a live demo.
 
 ## Features 
 
-*** IMPORTANT - Timer loop is set to 2 seconds work/rest for demonstration purposes. Tasks should also have a UNIQUE name ***
+**IMPORTANT - Timer loop is set to 2 seconds work/rest for demonstration purposes. Tasks should also have a UNIQUE name.**
 
 - Add/delete tasks.  
 - Input validation feedback.
