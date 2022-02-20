@@ -21,7 +21,7 @@ Please see https://elesian.github.io/pomodoro-react-app/ for a live demo.
 
 ### NPM Instructions
 
-1. Clone the repository locally using `git clone https://github.com/elesian/pokemon-battler-CLI.git`.
+1. Clone the repository locally using `git clone https://github.com/elesian/pomodoro-react-app.git`.
 2. Run `npm install` or `npm install -D` if you wish to additionally run JEST test suites.
 3. Run `npm start` to run the game or `npm test` if you wish to run the test-suite.
 
