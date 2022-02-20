@@ -32,7 +32,7 @@ Please see https://elesian.github.io/pomodoro-react-app/ for a live demo.
 - Add/delete tasks.  
 - Input validation feedback.
 - Task-list scroll bar.
-- Light-dark mode. 
+- Colour-feedback depending on whether timer is in 'break' or 'work' phase. 
 - Responsive design. 
 
 ## Project status
