@@ -13,8 +13,6 @@ This mini-app is a basic Pomodoro app built with React. The Pomodoro work/study 
 
 Please see https://elesian.github.io/pomodoro-react-app/ for a live demo.
 
-### Instructions
-
 ### Prerequisites
 
 - Ensure you have 14.x (Node v14 Fermium LTS).
